@@ -3,49 +3,227 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Perkenalan Saya</title>
+  <title>Dua Halaman + Piringan Lagu</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      max-width: 600px;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      max-width: 700px;
       margin: 40px auto;
       padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
+      border-radius: 15px;
       text-align: center;
-    }
-    img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      color: #333;
     }
     h1 {
-      color: #333;
-      margin-bottom: 5px;
+      color: #d63384;
+      margin-bottom: 15px;
     }
     p {
-      color: #555;
-      line-height: 1.5;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
+    blockquote {
+      font-style: italic;
+      background: #fff;
+      padding: 15px;
+      border-left: 5px solid #d63384;
+      margin: 20px auto;
+      border-radius: 10px;
+    }
+    .song-section {
+      background: rgba(255,255,255,0.8);
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    /* 🎵 Piringan Lagu */
+    .record {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      margin: 20px auto;
+      background: radial-gradient(circle at center,
+        #333 0%,
+        #111 40%,
+        #000 70%);
+      border: 6px solid #222;
+      position: relative;
+      animation: spin 6s linear infinite;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .record img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid white;
+      z-index: 2;
+    }
+    .record .label {
+      position: absolute;
+      top: 66%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: white;
+      font-size: 13px;
+      font-weight: bold;
+      z-index: 1;
+    }
+    .record .label span {
+      display: block;
+      font-size: 11px;
+      font-weight: normal;
+      color: #ddd;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* 🦋 Kupu-kupu */
+    .butterfly {
+      position: absolute;
+      font-size: 22px;
+      animation: fly 6s linear infinite;
+      z-index: 3;
+    }
+    .b1 { color: #ff69b4; top: -10px; left: 10px; animation-delay: 0s; }
+    .b2 { color: #00c3ff; top: 20px; right: 20px; animation-delay: 1s; }
+    .b3 { color: #32cd32; bottom: 10px; left: 30px; animation-delay: 2s; }
+    .b4 { color: #ffa500; bottom: 20px; right: 40px; animation-delay: 3s; }
+
+    @keyframes fly {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      25% { transform: translateY(-20px) translateX(15px) rotate(20deg); }
+      50% { transform: translateY(0) translateX(-15px) rotate(-20deg); }
+      75% { transform: translateY(-20px) translateX(10px) rotate(15deg); }
+      100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    }
+
+    /* 🔘 Tombol dengan animasi denyut */
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #d63384;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      animation: pulse 1.5s infinite;
+    }
+    button:hover {
+      background: #a61e65;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(214, 51, 132, 0.6); }
+      50% { transform: scale(1.1); box-shadow: 0 0 20px 10px rgba(214, 51, 132, 0.3); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(214, 51, 132, 0.6); }
+    }
+
+    /* Halaman */
+    .page { display: none; }
+    .active { display: block; }
   </style>
 </head>
 <body>
 
-  <!-- Gambar + link Google Drive -->
-  <a href="https://drive.google.com/file/d/1sbrjPkdsM5jT7gMcPwtVkq2p73mSI2Jl/view?usp=drivesdk" target="_blank">
-    <img src="https://drive.google.com/uc?export=view&id=1sbrjPkdsM5jT7gMcPwtVkq2p73mSI2Jl" alt="Foto Saya"/>
-  </a>
+  <!-- Halaman Pertama -->
+  <div id="page1" class="page active">
+    <h1>🌸 Halo Cantik 🌸</h1>
+    <img src="https://drive.google.com/uc?export=view&id=PASTE_ID_FOTO" 
+         alt="Foto Kamu" style="width: 250px; border-radius: 15px; margin: 20px auto; display: block;">
+    <button onclick="nextPage()">Lanjut ya</button>
+  </div>
 
-  <h1>Halo, Saya Deny Bujang</h1>
-  <p>
-    Saya adalah siluman kera sakti dari kuil mahjong full wild <br />
-    Saya sudah bermain judol sejak saya mengenal gaspol 189.<br />
-    Terima kasih sudah berkunjung ke laman perkenalan saya!
-  </p>
+  <!-- Halaman Kedua -->
+  <div id="page2" class="page">
+    <h1>✨ emangat Selalu! ✨</h1>
+
+    <p>“Cantik itu bukan cuma wajahmu, tapi juga hatimu.  
+    Jangan pernah ragu, kamu bisa melewati semuanya.💖“</p>
+
+    <blockquote>
+      "Mencintai itu bukanlah menemukan seseorang yang sudah sempurna,  
+      tapi melihat seseorang yang tidak sempurna itu dengan cara yang sempurna."  
+      — B.J. Habibie
+    </blockquote>
+
+    <!-- 🎵 Piringan Lagu -->
+    <div class="record">
+      <!-- 🦋 Kupu-kupu kecil -->
+      <div class="butterfly b1">🦋</div>
+      <div class="butterfly b2">🦋</div>
+      <div class="butterfly b3">🦋</div>
+      <div class="butterfly b4">🦋</div>
+
+      <img src="https://drive.google.com/uc?export=view&id=PASTE_ID_FOTO" alt="Foto Album">
+      <div class="label">
+        Everything
+        <span>The Black Skirts</span>
+      </div>
+    </div>
+
+    <div class="song-section">
+      <h2>Everything – The Black Skirts 🎵</h2>
+      <p><em><div class="song-section">
+  <h2>Everything – The Black Skirts 🎵</h2>
+  <p><em>
+    you are my everything <br>
+    my everything <br>
+    my everything <br>
+    you are my everything <br>
+    my everything <br><br>
+
+    biga naerineun naren <br>
+    uri bangane nuwo amu mari eopsgo <br>
+    gameun nuneul majubomyeon modeun ge uri geoya <br>
+    jogeum haelssukhan eolgullo nal chajaol ttaedo <br>
+    gakkeum balchikhan yaegiro nal nollaelkil ttaedo <br><br>
+
+    <span style="color:blue">Do you want to be mine?</span> <br><br>
+
+    you are my everything <br>
+    my everything <br>
+    my everything <br>
+    you are my everything <br>
+    my everything <br><br>
+
+    neon nae modeun geoya <br>
+    nae yeoreumigo <br>
+    nae kk-miya <br>
+    neon nae modeun geoya <br>
+    na issneun geudaero <br>
+    bada julgeyo
+  </em></p>
+</div>
+
+</em></p>
+    </div>
+
+    <button onclick="prevPage()">Iya</button>
+  </div>
+
+  <script>
+    function nextPage() {
+      document.getElementById("page1").classList.remove("active");
+      document.getElementById("page2").classList.add("active");
+    }
+    function prevPage() {
+      document.getElementById("page2").classList.remove("active");
+      document.getElementById("page1").classList.add("active");
+    }
+  </script>
 
 </body>
-</html>
+  </html>
+      
